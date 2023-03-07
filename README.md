@@ -1,6 +1,6 @@
-# [PersonAI Component Library]
+# PersonAI Component Library
 
-[Description of the library and its purpose]
+The purpose of this component library is to provide a set of reusable components that can be used in the PersonAI application. This library is built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and [Storybook](https://storybook.js.org/).
 
 ## Installation
 
