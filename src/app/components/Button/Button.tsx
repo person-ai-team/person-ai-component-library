@@ -1,14 +1,20 @@
 import React, { useMemo } from "react";
+import { IconType } from "react-icons";
 import { ImSpinner2 } from "react-icons/im";
 
 const ButtonVariant = ['primary', 'outline', 'ghost', 'light', 'dark'] as const;
+const ButtonSize = ['extraSmall', 'small', 'medium', 'large'] as const;
 
 type ButtonProps = {
 	isLoading?: boolean;
 	isDarkBg?: boolean;
 	variant?: typeof ButtonVariant[number];
-	size?: "extraSmall" | "small" | "medium" | "large";
+	size?: typeof ButtonSize[number];
 	label: string;
+	leftIcon?: IconType;
+	rightIcon?: IconType;
+	leftIconClassName?: string;
+	rightIconClassName?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const getVariantClasses = (variant: typeof ButtonVariant[number]): string => {
@@ -34,7 +40,7 @@ const getVariantClasses = (variant: typeof ButtonVariant[number]): string => {
 	}
 };
 
-const getSizeClasses = (size: "extraSmall" | "small" | "medium" | "large"): string => {
+const getSizeClasses = (size: typeof ButtonSize[number]): string => {
 	switch (size) {
 		case "extraSmall": {
 			return "px-2.5 py-1.5 text-xs";
@@ -44,6 +50,9 @@ const getSizeClasses = (size: "extraSmall" | "small" | "medium" | "large"): stri
 		}
 		case "large": {
 			return "px-6 py-3 text-base";
+		}
+		case "medium": {
+			return "px-4 py-2 text-sm";
 		}
 		default: {
 			return "px-4 py-2 text-sm";
@@ -63,6 +72,20 @@ const getLoadingClasses = (isLoading: boolean): string | undefined => {
 	}
 };
 
+const getLeftIconClasses = (leftIconClassName: string | undefined): string => {
+	if (leftIconClassName) {
+		return leftIconClassName;
+	}
+	return "mr-2";
+};
+
+const getRightIconClasses = (rightIconClassName: string | undefined): string => {
+	if (rightIconClassName) {
+		return rightIconClassName;
+	}
+	return "ml-2";
+};
+
 const BASE_BUTTON_CLASSES =
 	"cursor-pointer rounded-lg border font-medium inline-flex items-center justify-center";
 
@@ -72,10 +95,15 @@ const BASE_BUTTON_CLASSES =
 export const Button: React.FC<ButtonProps> = ({
 	size = "medium",
 	label,
+	className,
 	isLoading = false,
 	disabled: buttonDisabled = false,
 	variant = "primary",
 	isDarkBg = false,
+	leftIcon: LeftIcon,
+	rightIcon: RightIcon,
+	leftIconClassName,
+	rightIconClassName,
 	...props
 }) => {
 	const disabled = isLoading || buttonDisabled;
@@ -89,14 +117,20 @@ export const Button: React.FC<ButtonProps> = ({
 	}, [size, variant, isDarkBg, isLoading]);
 
 	return (
-		<button disabled={disabled} type="button" className={`${BASE_BUTTON_CLASSES} ${computedClasses}`} {...props}>
+		<button disabled={disabled} type="button" className={`${BASE_BUTTON_CLASSES} ${computedClasses} ${className || ''}`} {...props}>
 			{isLoading && (
 				<span className="">
 					<ImSpinner2 className="animate-spin" />
 				</span>
 			)}
 			{
-				!isLoading && label
+				!isLoading && (
+					<>
+						{LeftIcon && <LeftIcon className={getLeftIconClasses(leftIconClassName)} />}
+						{label}
+						{RightIcon && <RightIcon className={getRightIconClasses(rightIconClassName)} />}
+					</>
+				)
 			}
 		</button>
 	);
