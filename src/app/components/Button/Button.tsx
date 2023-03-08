@@ -1,51 +1,88 @@
 import React, { useMemo } from "react";
+// import { ImSpinner2 } from "react-icons/im";
+
+const ButtonVariant = ['primary', 'outline', 'ghost', 'light', 'dark'] as const;
 
 type ButtonProps = {
-	primary?: boolean;
-	size?: "small" | "medium" | "large";
+	isLoading?: boolean;
+	isDarkBg?: boolean;
+	variant?: typeof ButtonVariant[number];
+	size?: "extraSmall" | "small" | "medium" | "large";
 	label: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-const getSizeClasses = (size: "small" | "medium" | "large"): string => {
-	switch (size) {
-		case "small": {
-			return "px-4 py-2.5";
+const getVariantClasses = (variant: typeof ButtonVariant[number]): string => {
+	switch (variant) {
+		case "primary": {
+			return "text-white bg-gray-600 hover:bg-gray-700 border-transparent";
 		}
-		case "large": {
-			return "px-6 py-3";
+		case "outline" : {
+			return "bg-transparent hover:bg-gray-100 text-gray-700 border border-gray-300 hover:border-gray-400";
+		}
+		case "ghost": {
+			return "bg-slate-100 hover:bg-slate-200 text-gray-700";
+		}
+		case "light": {
+			return "bg-white hover:bg-gray-100 text-gray-700";
+		}
+		case "dark": {
+			return "bg-gray-800 hover:bg-gray-700 text-white";
 		}
 		default: {
-			return "px-5 py-2.5";
+			return "bg-blue-500 hover:bg-blue-600 text-white";
 		}
 	}
 };
 
-const getModeClasses = (isPrimary: boolean): string =>
-	isPrimary
-		? "text-white bg-blue-400 dark:bg-blue-700"
-		: "text-slate-700 bg-red-600 border-slate-700 dark:text-white dark:border-white";
+const getSizeClasses = (size: "extraSmall" | "small" | "medium" | "large"): string => {
+	switch (size) {
+		case "extraSmall": {
+			return "px-2.5 py-1.5 text-xs";
+		}
+		case "small": {
+			return "px-3 py-2 text-sm";
+		}
+		case "large": {
+			return "px-6 py-3 text-base";
+		}
+		default: {
+			return "px-4 py-2 text-sm";
+		}
+	}
+};
+
+const getDarkBgClasses = (isDarkBg: boolean, variant: typeof ButtonVariant[number] ): string | undefined => {
+	if (isDarkBg && variant === "outline" ) {
+		return "text-white hover:text-black";
+	}
+};
 
 const BASE_BUTTON_CLASSES =
-	"cursor-pointer rounded-full border-2 font-bold leading-none inline-block";
+	"cursor-pointer rounded-lg border font-medium inline-flex items-center justify-center";
 
 /**
  * Primary UI component for user interaction
  */
 export const Button: React.FC<ButtonProps> = ({
-	primary = false,
 	size = "medium",
 	label,
+	isLoading = false,
+	disabled: buttonDisabled = false,
+	variant = "primary",
+	isDarkBg = false,
 	...props
 }) => {
+	const disabled = isLoading || buttonDisabled;
 	const computedClasses = useMemo(() => {
-		const modeClass = getModeClasses(primary);
 		const sizeClass = getSizeClasses(size);
+		const variantClass = getVariantClasses(variant as typeof ButtonVariant[number]);
+		const darkBgClass = getDarkBgClasses(isDarkBg as boolean, variant as typeof ButtonVariant[number]);
 
-		return [modeClass, sizeClass].join(" ");
-	}, [primary, size]);
+		return [variantClass, sizeClass, darkBgClass].join(" ");
+	}, [size, variant, isDarkBg]);
 
 	return (
-		<button type="button" className={`${BASE_BUTTON_CLASSES} ${computedClasses}`} {...props}>
+		<button disabled={disabled} type="button" className={`${BASE_BUTTON_CLASSES} ${computedClasses}`} {...props}>
 			{label}
 		</button>
 	);
