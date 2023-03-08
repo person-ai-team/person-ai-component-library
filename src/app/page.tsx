@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from './page.module.css'
+import { Button } from './components/Button/Button'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -42,6 +43,17 @@ export default function Home() {
         />
         <div className={styles.thirteen}>
           <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
+        </div>
+        <div>
+          <Button
+            label="Button"
+            className='ml-2'
+            variant="primary"
+            size="medium"
+            isDarkBg={false}
+            isLoading={false}
+            disabled={false}
+          />
         </div>
       </div>
 
