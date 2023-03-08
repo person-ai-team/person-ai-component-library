@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-// import { ImSpinner2 } from "react-icons/im";
+import { ImSpinner2 } from "react-icons/im";
 
 const ButtonVariant = ['primary', 'outline', 'ghost', 'light', 'dark'] as const;
 
@@ -57,6 +57,12 @@ const getDarkBgClasses = (isDarkBg: boolean, variant: typeof ButtonVariant[numbe
 	}
 };
 
+const getLoadingClasses = (isLoading: boolean): string | undefined => {
+	if (isLoading) {
+		return "relative disabled:cursor-wait";
+	}
+};
+
 const BASE_BUTTON_CLASSES =
 	"cursor-pointer rounded-lg border font-medium inline-flex items-center justify-center";
 
@@ -77,13 +83,21 @@ export const Button: React.FC<ButtonProps> = ({
 		const sizeClass = getSizeClasses(size);
 		const variantClass = getVariantClasses(variant as typeof ButtonVariant[number]);
 		const darkBgClass = getDarkBgClasses(isDarkBg as boolean, variant as typeof ButtonVariant[number]);
+		const loadingClass = getLoadingClasses(isLoading as boolean);
 
-		return [variantClass, sizeClass, darkBgClass].join(" ");
-	}, [size, variant, isDarkBg]);
+		return [variantClass, sizeClass, darkBgClass, loadingClass].join(" ");
+	}, [size, variant, isDarkBg, isLoading]);
 
 	return (
 		<button disabled={disabled} type="button" className={`${BASE_BUTTON_CLASSES} ${computedClasses}`} {...props}>
-			{label}
+			{isLoading && (
+				<span className="">
+					<ImSpinner2 className="animate-spin" />
+				</span>
+			)}
+			{
+				!isLoading && label
+			}
 		</button>
 	);
 };
