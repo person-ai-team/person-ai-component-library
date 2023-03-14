@@ -19,33 +19,7 @@ import {
 import DatePicker from "../DatePicker/DatePicker";
 import Image from "next/image";
 
-const projects = [
-  {
-    id: 1,
-    name: "Workflow Inc. / Website Redesign",
-    category: "Projects",
-    url: "#",
-  },
-  // More projects...
-];
 
-const users = [
-  {
-    id: 1,
-    name: "Leslie Alexander",
-    url: "#",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    id: 2,
-    name: "Michael Foster",
-    url: "#",
-    imageUrl: 
-    "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  }
-  // More users...
-];
 
 const calendar = [
   { id: 1, name: "Calendar" },
@@ -90,21 +64,6 @@ export default function Launcher() {
 
   const query = rawQuery.toLowerCase().replace(/^[#>]/, "");
 
-  const filteredProjects =
-    rawQuery === "lqlqlq"
-      ? projects
-      : query === "" || rawQuery.startsWith(">") || rawQuery.startsWith("c")
-      ? []
-      : projects.filter((project) =>
-          project.name.toLowerCase().includes(query)
-        );
-
-  const filteredUsers =
-    rawQuery === ">"
-      ? users
-      : query === "" || rawQuery.startsWith("#") || rawQuery.startsWith("c")
-      ? []
-      : users.filter((user) => user.name.toLowerCase().includes(query));
 
   const filteredCommands =
      rawQuery === "#" 
@@ -130,18 +89,19 @@ export default function Launcher() {
               <Combobox onChange={(item: any) => (window.location = item.url)}>
                 <div className="relative">
                   <MagnifyingGlassIcon
-                    className="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-400"
+                    className="pointer-events-none absolute top-2.5 left-4 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
                   <Combobox.Input
-                    className="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm"
+                    className="h-10 lg:w-full xl:max-w-xl border-none bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 sm:text-sm"
                     placeholder="Explore Person.ai"
                     onChange={(event) => setRawQuery(event.target.value)}
                   />
                 </div>
 
-                {rawQuery.length > 0 && (
-                  <div className="p-1">
+                <div className="bg-white border border-gray lg:w-full xl:max-w-xl">
+                {rawQuery.length > 0 && rawQuery != '#' && (
+                  <div className="bg-white mt-2 lg:w-full xl:max-w-xl">
                     <div className="flex cursor-pointer select-none rounded-lg hover:bg-gray-200 p-3">
                       <div
                         className={classNames(
@@ -176,7 +136,10 @@ export default function Launcher() {
 
                 {
                   filteredCommands.length > 0 && (
-                    <div className="p-1">
+                    <div className="p-1 bg-white lg:w-full xl:max-w-xl">
+                      <div>
+                        <p className="text-sm text-gray-500 p-2 font-small">Commands</p>
+                      </div>
                       {
                         filteredCommands.map((item) => (
                           <Combobox.Option
@@ -271,86 +234,10 @@ export default function Launcher() {
                   </li>
                 )} */}
 
-                
-
-                {(filteredProjects.length > 0 || filteredUsers.length > 0) && (
-                  <Combobox.Options
-                    static
-                    className="max-h-80 scroll-py-10 scroll-py-10 scroll-pb-2 scroll-pb-2 space-y-4 overflow-y-auto p-4 pb-2"
-                  >
-                    {filteredProjects.length > 0 && (
-                      <li>
-                        <h2 className="text-xs font-semibold text-gray-900">
-                          Projects
-                        </h2>
-                        <ul className="-mx-4 mt-2 text-sm text-gray-700">
-                          {filteredProjects.map((project) => (
-                            <Combobox.Option
-                              key={project.id}
-                              value={project}
-                              className={({ active }) =>
-                                classNames(
-                                  "flex cursor-default select-none items-center px-4 py-2",
-                                  active && "bg-indigo-600 text-white"
-                                )
-                              }
-                            >
-                              {({ active }) => (
-                                <>
-                                  <FolderIcon
-                                    className={classNames(
-                                      "h-6 w-6 flex-none",
-                                      active ? "text-white" : "text-gray-400"
-                                    )}
-                                    aria-hidden="true"
-                                  />
-                                  <span className="ml-3 flex-auto truncate">
-                                    {project.name}
-                                  </span>
-                                </>
-                              )}
-                            </Combobox.Option>
-                          ))}
-                        </ul>
-                      </li>
-                    )}
-                    {filteredUsers.length > 0 && (
-                      <li>
-                        <h2 className="text-xs font-semibold text-gray-900">
-                          Users
-                        </h2>
-                        <ul className="-mx-4 mt-2 text-sm text-gray-700">
-                          {filteredUsers.map((user) => (
-                            <Combobox.Option
-                              key={user.id}
-                              value={user}
-                              className={({ active }) =>
-                                classNames(
-                                  "flex cursor-default select-none items-center px-4 py-2",
-                                  active && "bg-indigo-600 text-white"
-                                )
-                              }
-                            >
-                              <Image
-                                width={6}
-                                height={6}
-                                src={user.imageUrl}
-                                alt=""
-                                className="h-6 w-6 flex-none rounded-full"
-                              />
-                              <span className="ml-3 flex-auto truncate">
-                                {user.name}
-                              </span>
-                            </Combobox.Option>
-                          ))}
-                        </ul>
-                      </li>
-                    )}
-                  </Combobox.Options>
-                )}
+              
 
                 {rawQuery === "?" && (
-                  <div className="py-14 px-6 text-center text-sm sm:px-14">
+                  <div className="py-14 px-6 lg:w-full xl:max-w-xl bg-white text-center text-sm sm:px-14">
                     <LifebuoyIcon
                       className="mx-auto h-6 w-6 text-gray-400"
                       aria-hidden="true"
@@ -376,7 +263,7 @@ export default function Launcher() {
                 )} */}
 
                 {(query !== '' || (rawQuery === '#' || rawQuery === '>' ))  && (
-                  <div className="flex flex-wrap items-center bg-gray-50 py-2.5 px-4 text-xs text-gray-700">
+                  <div className="flex flex-wrap lg:w-full xl:max-w-xl items-center bg-gray-50 py-2.5 px-4 text-xs text-gray-700">
                     Type{" "}
                     <kbd
                       className={classNames(
@@ -416,6 +303,7 @@ export default function Launcher() {
                     for help.
                   </div>
                 )}
+                </div>
               </Combobox>
   );
 }

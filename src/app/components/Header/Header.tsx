@@ -55,8 +55,8 @@ export default function Header() {
       >
         {({ open }) => (
           <>
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12" style={{height: 72}}>
+            <div className="mx-auto max-w-10xl px-4 sm:px-6 lg:px-4">
+              <div className="relative flex justify-between lg:gap-8" style={{height: 72}}>
                 <div className="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2">
                   <div className="flex flex-shrink-0 items-center">
                     <a href="#">
