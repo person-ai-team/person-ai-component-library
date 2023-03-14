@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Header } from "../components/Header/Header";
+import Header from "../components/Header/Header";
 
 const meta: Meta<typeof Header> = {
 	title: "Example/Header",
@@ -16,14 +16,14 @@ export default meta;
 type Story = StoryObj<typeof Header>;
 
 export const LoggedIn: Story = {
-	args: {
-		user: {
-			name: "Jane Doe",
-			email: "janedoe@gmail.com",
-			imageUrl:
-				"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-		},
-	},
+	// args: {
+	// 	user: {
+	// 		name: "Jane Doe",
+	// 		email: "janedoe@gmail.com",
+	// 		imageUrl:
+	// 			"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+	// 	},
+	// },
 };
 
 export const LoggedOut: Story = {};
