@@ -14,6 +14,7 @@ const config: StorybookConfig = {
 	docs: {
 		autodocs: "tag",
 	},
+	
 	// webpackFinal: async (webConfig) => {
 	// 	webConfig.module.rules.push({
 	// 		test: /\.css$/i,

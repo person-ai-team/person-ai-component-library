@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Combobox, Dialog, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import {
@@ -16,7 +16,10 @@ import {
   FcTodoList,
   FcCalendar,
 } from "react-icons/fc";
+import {IoReturnUpBack} from 'react-icons/io5'
 import DatePicker from "../DatePicker/DatePicker";
+import InputDatePicker from "../DatePicker/InputDatePicker";
+import Timepicker from "../TimePicker/Timepicker";
 import Image from "next/image";
 
 
@@ -61,8 +64,25 @@ function classNames(...classes: any) {
 export default function Launcher() {
   const [open, setOpen] = useState(true);
   const [rawQuery, setRawQuery] = useState("");
+  const [commandSelected, setCommandSelected] = useState("");
+
+  console.log('commandSelected', commandSelected)
 
   const query = rawQuery.toLowerCase().replace(/^[#>]/, "");
+
+  useEffect(() => {
+    if (rawQuery !== commandSelected) {
+      setCommandSelected("");
+    }
+  }, [rawQuery]);
+
+  useEffect(() => {
+    if (commandSelected) {
+      setRawQuery(commandSelected);
+    }
+  } , [commandSelected]);
+  
+
 
 
   const filteredCommands =
@@ -86,22 +106,22 @@ export default function Launcher() {
   // check if raw query has the word 'calendar' using fuzzy search or regex
 
   return (
-              <Combobox onChange={(item: any) => (window.location = item.url)}>
+              <Combobox value={rawQuery}  onChange={(item: any) => (window.location = item.url)}>
                 <div className="relative">
                   <MagnifyingGlassIcon
                     className="pointer-events-none absolute top-2.5 left-4 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
                   <Combobox.Input
-                    className="h-10 lg:w-full xl:max-w-xl border-none bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 sm:text-sm"
+                    className="h-10 md:w-full sm:w-full lg:w-full xl:max-w-xl border-none bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 sm:text-sm"
                     placeholder="Explore Person.ai"
                     onChange={(event) => setRawQuery(event.target.value)}
                   />
                 </div>
 
-                <div className="bg-white border border-gray lg:w-full xl:max-w-xl">
-                {rawQuery.length > 0 && rawQuery != '#' && (
-                  <div className="bg-white mt-2 lg:w-full xl:max-w-xl">
+                <div className="bg-white md:w-full lg:w-full xl:max-w-xl">
+                {rawQuery.length > 0 && rawQuery != '#' && !commandSelected && (
+                  <div className="bg-white mt-2 p-1 lg:w-full xl:max-w-xl">
                     <div className="flex cursor-pointer select-none rounded-lg hover:bg-gray-200 p-3">
                       <div
                         className={classNames(
@@ -135,7 +155,7 @@ export default function Launcher() {
                 )}
 
                 {
-                  filteredCommands.length > 0 && (
+                  filteredCommands.length > 0 && !commandSelected && (
                     <div className="p-1 bg-white lg:w-full xl:max-w-xl">
                       <div>
                         <p className="text-sm text-gray-500 p-2 font-small">Commands</p>
@@ -145,6 +165,7 @@ export default function Launcher() {
                           <Combobox.Option
                             key={item.name}
                             value={item}
+                            onClick={() => {setCommandSelected(item.name)}}
                             className={({ active }) =>
                               classNames(
                                 "flex cursor-pointer select-none rounded-lg hover:bg-gray-200 p-3",
@@ -181,6 +202,58 @@ export default function Launcher() {
                           </Combobox.Option>
                         ))
                       }
+                    </div>
+                  )
+                }
+
+                {
+                  rawQuery.length > 0 && commandSelected === 'Create Event' && rawQuery === 'Create Event' && (
+                    // add a form to create an event
+                    <div style={{ borderWidth: 1, borderColor: 'lightslategray'}} className=" -mt-11 -ml-1 absolute z-50 grid grid-cols-1 rounded-xl bg-white lg:w-full xl:max-w-2xl">
+                      <div className="p-2">
+                      <button onClick={() => {setRawQuery('')}}>
+                      <IoReturnUpBack className="h-6 w-6 ml-2.5 mt-1 text-black" aria-hidden="true" />
+                      </button>
+
+                      </div>
+                      <div style={{borderBottomWidth: 1, borderColor: 'lightslategray'}}/>
+                      <div className="p-8">
+                        <form>
+                          <div className="flex">
+                          <div className="mb-4 mt-1">
+                            <label className="block text-gray-600 text-sm font-mono mb-2" htmlFor="title">
+                              Event Title
+                            </label>
+                            <input className="shadow text-xs font-medium appearance-none border rounded-xl w-72 py-2 px-3 placeholder:text-gray-500 text-gray-700 leading-tight font-mono focus:outline-none focus-within:border-gray-400 focus:shadow-outline" id="title" type="text" placeholder="New Event" />
+                          </div>
+                          <div className="mb-4 mt-1 ml-auto">
+                            <label className="block text-gray-600 text-sm font-mono mb-2" htmlFor="title">
+                              Event Date
+                            </label>
+                            <InputDatePicker />
+                          </div>
+                          </div>
+                          <div className="mt-1 flex">
+                          <div className="mb-4 mt-1">
+                            <label className="block text-gray-600 text-sm font-mono mb-2" htmlFor="title">
+                              Event Time
+                            </label>
+                            <Timepicker />
+                            
+                            </div> 
+                            <div className="mb-4 mt-1 ml-7">
+                            <label className="block text-gray-600 text-sm font-mono mb-2" htmlFor="title">
+                              Event Duration
+                            </label>
+                            <div className="ml-3.5">
+                            <Timepicker />
+                            </div>
+                            
+                            </div>
+                          </div>
+   
+                          </form>
+                      </div>
                     </div>
                   )
                 }
