@@ -213,7 +213,7 @@ console.log('selectedDateWEL', selectedDate.toLocaleString("default", { weekday:
                 <input
                   type="text"
                   readOnly
-                  className="cursor-pointer shadow w-72 border text-center py-2 leading-tight font-mono focus:outline-none focus-within:border-gray-400 rounded-xl text-gray-700 font-medium text-xs"
+                  className="cursor-pointer shadow w-72 lg:w-80 border border-black text-center py-2 leading-tight font-mono focus:outline-none focus-within:border-gray-400 rounded-xl text-gray-700 font-medium text-xs"
                   placeholder="Select date"
                   value={selectedDate.toLocaleString("default", { weekday: "long", month: "long", day: "numeric", year: "numeric" })}
                   onClick={toggleDatepicker}

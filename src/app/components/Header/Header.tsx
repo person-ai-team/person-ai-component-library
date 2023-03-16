@@ -25,10 +25,11 @@ const user = {
     'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
+  { name: 'Home', href: '#', current: true },
   { name: 'Calendar', href: '#', current: false },
-  { name: 'Teams', href: '#', current: false },
-  { name: 'Directory', href: '#', current: false },
+  { name: 'Feed', href: '#', current: false },
+  { name: 'MealAI', href: '#', current: false },
+  { name: 'FitAI', href: '#', current: false },
 ]
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -55,14 +56,14 @@ export default function Header() {
       >
         {({ open }) => (
           <>
-            <div className="mx-auto max-w-10xl px-4 sm:px-6 lg:px-4">
+            <div className="mx-auto border-b max-w-10xl px-4 sm:px-6 lg:px-4">
               <div className="relative flex justify-between lg:gap-8" style={{height: 72}}>
                 <div className="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2">
                   <div className="flex flex-shrink-0 items-center">
                     <a href="#">
                       <img
-                        className="block h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                        className="block h-9 w-auto"
+                        src="https://person-taiyebabatope.s3.amazonaws.com/markest.svg"
                         alt="Your Company"
                       />
                     </a>
@@ -131,15 +132,25 @@ export default function Header() {
                       </Menu.Items>
                     </Transition>
                   </Menu>
-
-                  <a
-                    href="#"
-                    className="ml-6 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                  >
-                    New Project
-                  </a>
                 </div>
               </div>
+            </div>
+            <div className="mx-auto max-w-10xl px-4 sm:px-6 lg:px-4">
+            <nav className="hidden lg:flex lg:space-x-8 lg:py-2" aria-label="Global">
+              {navigation.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={classNames(
+                    item.current ? 'bg-gray-200 text-gray-900' : 'text-gray-900 hover:bg-gray-50 hover:text-gray-900',
+                    'rounded-md py-2 px-3 inline-flex items-center text-sm font-medium'
+                  )}
+                  aria-current={item.current ? 'page' : undefined}
+                >
+                  {item.name}
+                </a>
+              ))}
+            </nav>
             </div>
 
             <Popover.Panel as="nav" className="lg:hidden" aria-label="Global">
