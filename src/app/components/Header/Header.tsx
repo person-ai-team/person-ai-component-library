@@ -62,7 +62,7 @@ export default function Header() {
                     <a href="#">
                       <img
                         className="block h-9 w-auto"
-                        src="https://person-taiyebabatope.s3.amazonaws.com/markest.svg"
+                        src="https://person-taiyebabatope.s3.amazonaws.com/MARKEYYYY.svg"
                         alt="Your Company"
                       />
                     </a>
