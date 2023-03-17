@@ -26,8 +26,7 @@ const user = {
 }
 const navigation = [
   { name: 'Home', href: '#', current: true },
-  { name: 'Calendar', href: '#', current: false },
-  { name: 'Feed', href: '#', current: false },
+  { name: 'Timeline', href: '#', current: false },
   { name: 'MealAI', href: '#', current: false },
   { name: 'FitAI', href: '#', current: false },
 ]
@@ -135,7 +134,7 @@ export default function Header() {
                 </div>
               </div>
             </div>
-            <div className="mx-auto max-w-10xl px-4 sm:px-6 lg:px-4">
+            <div className="mx-auto border-b max-w-10xl px-4 sm:px-6 lg:px-4">
             <nav className="hidden lg:flex lg:space-x-8 lg:py-2" aria-label="Global">
               {navigation.map((item) => (
                 <a
@@ -143,7 +142,7 @@ export default function Header() {
                   href={item.href}
                   className={classNames(
                     item.current ? 'bg-gray-200 text-gray-900' : 'text-gray-900 hover:bg-gray-50 hover:text-gray-900',
-                    'rounded-md py-2 px-3 inline-flex items-center text-sm font-medium'
+                    'rounded-md py-2 px-3 inline-flex items-center text-sm font-small'
                   )}
                   aria-current={item.current ? 'page' : undefined}
                 >

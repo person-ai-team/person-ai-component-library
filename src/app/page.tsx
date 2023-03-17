@@ -2,102 +2,82 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from './page.module.css'
 import { Button } from './components/Button/Button'
+import Layout from './layout'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <Layout>
+      <div>
+      <div className=" w-full max-w-12xl flex-grow lg:flex ">
+          {/* Left sidebar & main wrapper */}
+          <div className="min-w-0 flex-1 bg-white xl:flex">
+            
+
+            <div className="bg-white lg:min-w-0 lg:flex-1">
+              <div className="h-full py-6 px-4 sm:px-6 lg:px-8">
+                {/* Start main area*/}
+                <div className="relative h-36">
+                  <div className="absolute inset-0 bg-gray-200 rounded-lg shadow border-1 border-solid border-gray-500" >
+                    <p className='p-4 leading-loose font-small text-justify text-sm'>
+                    Today was a productive day. I had a healthy breakfast of eggs and oatmeal before a standing meeting and completing a task. I had a meeting with United Way in the afternoon and went to the gym in the evening. Now, I'm relaxing at home, watching a movie or spending time with loved ones. The balance of work, exercise, and relaxation helped me stay focused and feel fulfilled. I'm ready for tomorrow!
+                    </p>
+                    </div>
+                </div>
+                {/* End main area */}
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white pr-4 sm:pr-6 lg:flex-shrink-0 lg:border-l lg:border-gray-00 lg:pr-8 xl:pl-2 xl:pr-8">
+            <div className="h-full py-6 pl-6 lg:w-96" style={{ minWidth: '42.5rem'}}>
+              {/* Start right column area */}
+              <div className="relative h-36" >
+                <div className="absolute inset-0 bg-gray-200 rounded-lg shadow border-1 border-solid border-gray-500" />
+              </div>
+              {/* End right column area */}
+            </div>
+          </div>
+
+        </div>
+        <div className=" w-full max-w-12xl flex-grow lg:flex ">
+          {/* Left sidebar & main wrapper */}
+          <div className="min-w-0 flex-1 bg-white xl:flex">
+            
+
+            <div className="bg-white lg:min-w-0 lg:flex-1">
+              <div className="h-full py-6 px-4 sm:px-6 lg:px-8">
+                {/* Start main area*/}
+                <div className="relative h-full" style={{minHeight: '30rem'}}>
+                  <div className="absolute inset-0 bg-gray-200 rounded-lg shadow border-1 border-solid border-gray-500" />
+                </div>
+                {/* End main area */}
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white pr-4 sm:pr-6 lg:flex-shrink-0 lg:border-l lg:border-gray-00 lg:pr-8 xl:pl-2 xl:pr-8">
+            <div className="h-full py-6 pl-6 lg:w-80">
+              {/* Start right column area */}
+              <div className="relative h-full" style={{minHeight: '30rem'}} >
+                <div className="absolute inset-0 bg-gray-200 rounded-lg shadow border-1 border-solid border-gray-500" />
+              </div>
+              {/* End right column area */}
+            </div>
+          </div>
+
+          <div className="bg-white pr-4 sm:pr-6 lg:flex-shrink-0 lg:border-gray-200 lg:pr-8 xl:pl-2 xl:pr-8">
+            <div className="h-full py-6 pl-6 lg:w-80">
+              {/* Start right column area */}
+              <div className="relative h-full" style={{minHeight: '30rem'}} >
+                <div className="absolute inset-0 bg-gray-200 rounded-lg border-1 shadow border-solid border-gray-500" />
+                </div>
+              {/* End right column area */}
+              </div>
+              </div>
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-        <div>
-          <Button
-            label="Button"
-            className='ml-2'
-            variant="primary"
-            size="medium"
-            isDarkBg={false}
-            isLoading={false}
-            disabled={false}
-          />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </Layout>
   )
 }

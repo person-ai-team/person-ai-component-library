@@ -119,7 +119,7 @@ export default function Launcher() {
                   />
                 </div>
 
-                <div className="bg-white md:w-full lg:max-w-md xl:max-w-xl">
+                <div className="bg-white z-50 relative md:w-full lg:max-w-md xl:max-w-xl">
                 {rawQuery.length > 0 && rawQuery != '#' && !commandSelected && (
                   <div className="bg-white mt-2 p-1 lg:w-full xl:max-w-xl">
                     <div className="flex cursor-pointer select-none rounded-lg hover:bg-gray-200 p-3">
@@ -209,13 +209,13 @@ export default function Launcher() {
                 {
                   rawQuery.length > 0 && commandSelected === 'Create Event' && rawQuery === 'Create Event' && (
                     // add a form to create an event
-                    <div style={{ borderWidth: 1, borderColor: 'lightslategray'}} className=" -mt-11 -ml-1 absolute z-50 grid grid-cols-1 rounded-xl bg-white lg:w-2/4 xl:max-w-2xl">
+                    <div style={{ borderWidth: 1, borderColor: 'lightslategray'}} className=" -mt-11 -ml-1 fixed z-50 grid grid-cols-1 rounded-xl bg-white lg:w-2/4 xl:max-w-2xl">
                       <div className="p-2 flex">
                       <button onClick={() => {setRawQuery('')}}>
                       <IoReturnUpBack className="h-6 w-6 ml-2.5 mt-1 text-black" aria-hidden="true" />
                       </button>
                       <div>
-                        <p className="text-sm text-black mt-1 font-mono lg:ml-52 font-small">Create Event</p>
+                        <p className="text-sm text-black mt-1.5 font-mono lg:ml-10 font-small">Create Event</p>
                         </div>
 
                       </div>
