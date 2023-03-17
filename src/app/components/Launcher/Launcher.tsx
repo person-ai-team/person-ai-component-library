@@ -139,16 +139,14 @@ export default function Launcher() {
 </svg> */}
                       </div>
                       <div className="ml-2 flex-auto">
-                        <p
+                        <div
                           className={classNames(
                             "text-sm text-gray-700 font-small"
                           )}
                         >
                           Search with AI
-                        </p>
-                        {/* <p className={classNames('text-sm', active ? 'text-gray-700' : 'text-gray-500')}>
-                                {item.description}
-                              </p> */}
+                        </div>
+                
                       </div>
                     </div>
                   </div>
@@ -158,7 +156,7 @@ export default function Launcher() {
                   filteredCommands.length > 0 && !commandSelected && (
                     <div className="p-1 bg-white lg:w-full xl:max-w-xl">
                       <div>
-                        <p className="text-sm text-gray-500 p-2 font-small">Commands</p>
+                        <div className="text-sm text-gray-500 p-2 font-small">Commands</div>
                       </div>
                       {
                         filteredCommands.map((item) => (
@@ -186,16 +184,14 @@ export default function Launcher() {
                                   />
                                 </div>
                                 <div className="ml-2 flex-auto">
-                                  <p
+                                  <div
                                     className={classNames(
                                       "text-sm text-gray-700 font-small"
                                     )}
                                   >
                                     {item.name}
-                                  </p>
-                                  {/* <p className={classNames('text-sm', active ? 'text-gray-700' : 'text-gray-500')}>
-                                {item.description}
-                              </p> */}
+                                  </div>
+                                  
                                 </div>
                               </>
                             )}
@@ -215,7 +211,7 @@ export default function Launcher() {
                       <IoReturnUpBack className="h-6 w-6 ml-2.5 mt-1 text-black" aria-hidden="true" />
                       </button>
                       <div>
-                        <p className="text-sm text-black mt-1.5 font-mono lg:ml-10 font-small">Create Event</p>
+                        <div className="text-sm text-black mt-1.5 font-mono lg:ml-10 font-small">Create Event</div>
                         </div>
 
                       </div>
@@ -320,25 +316,19 @@ export default function Launcher() {
                       className="mx-auto h-6 w-6 text-gray-400"
                       aria-hidden="true"
                     />
-                    <p className="mt-4 font-semibold text-gray-900">
+                    <div className="mt-4 font-semibold text-gray-900">
                       Help with searching
-                    </p>
-                    <p className="mt-2 text-gray-500">
+                    </div>
+                    <div className="mt-2 text-gray-500">
                       Use this tool to quickly search for users and projects
                       across our entire platform. You can also use the search
                       modifiers found in the footer below to limit the results
                       to just users or projects.
-                    </p>
+                    </div>
                   </div>
                 )}
 
-                {/* {query !== '' && rawQuery !== '?' && filteredProjects.length === 0 && filteredUsers.length === 0 && filteredCalendar.length === 0 && (
-                  <div className="py-14 px-6 text-center text-sm sm:px-14">
-                    <ExclamationTriangleIcon className="mx-auto h-6 w-6 text-gray-400" aria-hidden="true" />
-                    <p className="mt-4 font-semibold text-gray-900">No results found</p>
-                    <p className="mt-2 text-gray-500">We couldn’t find anything with that term. Please try again.</p>
-                  </div>
-                )} */}
+            
 
                 {(query !== '' || (rawQuery === '#' || rawQuery === '>' ))  && (
                   <div className="flex flex-wrap lg:max-w-md xl:max-w-xl items-center bg-gray-50 py-2.5 px-4 text-xs text-gray-700">

@@ -256,18 +256,18 @@ console.log('selectedDateWEL', selectedDate.toLocaleString("default", { weekday:
                           
                           className="flex-grow p-1 text-lg font-bold text-gray-800 cursor-pointer  rounded-lg"
                         >
-                          <p className="text-center">
+                          <div className="text-center">
                             {format(datepickerHeaderDate, "MMMM")}
-                          </p>
+                          </div>
                         </div>
                       )}
                       <div
                         
                         className="flex-grow p-1 text-lg font-bold text-gray-800 cursor-pointer rounded-lg"
                       >
-                        <p className="text-center">
+                        <div className="text-center">
                           {format(datepickerHeaderDate, "yyyy")}
-                        </p>
+                        </div>
                       </div>
                       <div>
                         <button
