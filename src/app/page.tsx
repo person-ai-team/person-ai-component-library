@@ -1,13 +1,18 @@
+'use client';
+
+import type { NextPage } from 'next'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from './page.module.css'
 import { Button } from './components/Button/Button'
+import Header from './components/Header/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+const Home = () => {
   return (
       <div>
+              <Header />
       <div className=" w-full max-w-12xl flex-grow lg:flex ">
           {/* Left sidebar & main wrapper */}
           <div className="min-w-0 flex-1 bg-white xl:flex">
@@ -16,10 +21,10 @@ export default function Home() {
             <div className="bg-white lg:min-w-0 lg:flex-1">
               <div className="h-full py-6 px-4 sm:px-6 lg:px-8">
                 {/* Start main area*/}
-                <div className="relative h-36">
+                <div className="relative h-28">
                   <div className="absolute inset-0 bg-gray-200 rounded-lg shadow border-1 border-solid border-gray-500" >
-                    <div className='p-4 leading-loose font-small text-justify lg:leading-normal text-sm'>
-                    Today was a productive day. I had a healthy breakfast of eggs and oatmeal before a standing meeting and completing a task. I had a meeting with United Way in the afternoon and went to the gym in the evening. Now, I'm relaxing at home, watching a movie or spending time with loved ones. The balance of work, exercise, and relaxation helped me stay focused and feel fulfilled. I'm ready for tomorrow!
+                    <div className='p-4 whitespace-normal leading-loose text-wrap font-small text-justify lg:leading-normal text-sm'>
+                    Today was a productive day. I had a healthy breakfast of eggs and oatmeal before a standing meeting and completing a task. 
                     </div>
                     </div>
                 </div>
@@ -78,3 +83,5 @@ export default function Home() {
       </div>
   )
 }
+
+export default Home
