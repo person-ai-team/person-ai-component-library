@@ -1,4 +1,5 @@
 import './globals.css'
+import "@aws-amplify/ui-react/styles.css";
 
 
 export const metadata = {
@@ -6,7 +7,7 @@ export const metadata = {
   description: 'PersonAI is a platform for building and deploying AI models for personalization and recommendation.',
 }
 
-export default function RootLayout({
+function RootLayout({
   children,
 }: {
   children: React.ReactNode
@@ -21,3 +22,5 @@ export default function RootLayout({
     </html>
   )
 }
+
+export default RootLayout

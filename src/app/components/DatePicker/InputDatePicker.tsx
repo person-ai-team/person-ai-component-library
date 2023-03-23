@@ -71,7 +71,7 @@ export default function InputDatePicker(props: any) {
   };
 
   // compare formats of date.now and selectedDate
-  const currentDate = format(Date.now(), "mm/dd/yyyy")
+  const currentDate = format(Date.now(), "mm/dd/yyyy") as any
   const selectedDateFormatted = format(selectedDate, "mm/dd/yyyy")
 
   console.log('currentDateFormat', selectedDateFormatted)

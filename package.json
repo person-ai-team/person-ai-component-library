@@ -11,12 +11,14 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@aws-amplify/ui-react": "^4.4.1",
     "@headlessui/react": "^1.7.13",
     "@heroicons/react": "^2.0.16",
     "@types/aria-query": "^5.0.1",
     "@types/node": "18.14.6",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "aws-amplify": "^5.0.21",
     "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
     "eslint": "8.35.0",

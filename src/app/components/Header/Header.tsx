@@ -18,13 +18,9 @@ import { Menu, Popover, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Launcher from '../Launcher/Launcher'
+import signOut from '@/app/api/auth/logout'
 
-const user = {
-  name: 'Chelsea Hagon',
-  email: 'chelsea.hagon@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
+
 const navigation = [
   { name: 'Home', href: '#', current: true },
   { name: 'Timeline', href: '#', current: false },
@@ -32,16 +28,28 @@ const navigation = [
   { name: 'FitAI', href: '#', current: false },
 ]
 const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Your Profile', onclick: () => console.log('Your Profile') },
+  { name: 'Settings', onclick: () => console.log('Settings') },
+  { name: 'Sign out', onclick: signOut },
 ]
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Header() {
+export default function Header(props: any) {
+  const { userName, userEmail } = props
+
+  console.log('userName', userName)
+  console.log('userEmail', userEmail)
+
+  const user = {
+    name: userName,
+    email: userEmail,
+    imageUrl:
+      'https://media.licdn.com/dms/image/C5603AQH83ZapMqzoMQ/profile-displayphoto-shrink_800_800/0/1656421320871?e=2147483647&v=beta&t=NOvvw_yMJ_pHvqDWJdNCQ6v-a7ZLQ213XxrdAnuQRUU',
+  }
+
   return (
     <>
       {/* When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars */}
@@ -113,12 +121,12 @@ export default function Header() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         {userNavigation.map((item) => (
                           <Menu.Item key={item.name}>
                             {({ active }) => (
                               <a
-                                href={item.href}
+                                onClick={item.onclick}
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
                                   'block py-2 px-4 text-sm text-gray-700'
@@ -188,13 +196,13 @@ export default function Header() {
                 </div>
                 <div className="mx-auto mt-3 max-w-3xl space-y-1 px-2 sm:px-4">
                   {userNavigation.map((item) => (
-                    <a
+                    <button
                       key={item.name}
-                      href={item.href}
+                      onClick={item.onclick}
                       className="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
                     >
                       {item.name}
-                    </a>
+                    </button>
                   ))}
                 </div>
               </div>

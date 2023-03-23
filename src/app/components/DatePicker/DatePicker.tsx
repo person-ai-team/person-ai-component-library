@@ -98,7 +98,7 @@ export default function DatePicker() {
           <div>S</div>
         </div>
         <div className=" grid grid-cols-7 text-xs">
-          {days.map((day, dayIdx) => (
+          {days.map((day: any, dayIdx) => (
             <div key={day.date} className={classNames(dayIdx > 6 && 'border-t border-gray-200', 'py-0.5')}>
               <button
                 type="button"

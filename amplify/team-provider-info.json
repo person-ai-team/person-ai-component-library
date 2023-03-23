@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-personaicomponentlib-dev-133815-authRole",
+      "UnauthRoleArn": "arn:aws:iam::522404115964:role/amplify-personaicomponentlib-dev-133815-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::522404115964:role/amplify-personaicomponentlib-dev-133815-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-personaicomponentlib-dev-133815-deployment",
+      "UnauthRoleName": "amplify-personaicomponentlib-dev-133815-unauthRole",
+      "StackName": "amplify-personaicomponentlib-dev-133815",
+      "StackId": "arn:aws:cloudformation:us-east-1:522404115964:stack/amplify-personaicomponentlib-dev-133815/b6590430-c8e0-11ed-91ee-0ef4c173b0cd",
+      "AmplifyAppId": "d14bmddm3hb1aw"
+    },
+    "categories": {
+      "auth": {
+        "personaicomponentlib": {}
+      }
+    }
+  }
+}

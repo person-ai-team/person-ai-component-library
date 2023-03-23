@@ -6,13 +6,47 @@ import { Inter } from 'next/font/google'
 import styles from './page.module.css'
 import { Button } from './components/Button/Button'
 import Header from './components/Header/Header'
+import { withAuthenticator, } from "@aws-amplify/ui-react";
+import { Amplify, Auth } from "aws-amplify";
+import awsmobile from "../aws-exports";
+import { useState, useEffect } from 'react';
+
+Amplify.configure(awsmobile);
+
+
+// Auth.currentAuthenticatedUser()
+//   .then(user => {
+//     console.log('Current user:', user);
+//   })
+//   .catch(error => {
+//     console.log('Error getting current user:', error);
+//   });
 
 const inter = Inter({ subsets: ['latin'] })
 
-const Home = () => {
+const Home = ( ) => {
+  const [user, setUser] = useState(null);
+  const [userName, setUserName] = useState(null as string | null);
+  const [userEmail, setUserEmail] = useState(null as string | null);
+  
+  useEffect(() => {
+    Auth.currentAuthenticatedUser()
+      .then(user => {
+        console.log('Current user:', user);
+        setUser(user);
+        setUserName(user.attributes.given_name + ' ' + user.attributes.family_name);
+        setUserEmail(user.attributes.email);
+      })
+      .catch(error => {
+        console.log('Error getting current user:', error);
+      });
+  }, []);
+
+  console.log('userName', userName);
+
   return (
       <div>
-              <Header />
+              <Header userName={userName} userEmail={userEmail} />
       <div className=" w-full max-w-12xl flex-grow lg:flex ">
           {/* Left sidebar & main wrapper */}
           <div className="min-w-0 flex-1 bg-white xl:flex">
@@ -84,4 +118,5 @@ const Home = () => {
   )
 }
 
-export default Home
+export default withAuthenticator(Home)
+// export default Home
