@@ -1,5 +1,36 @@
 {
-  "api": {},
+  "api": {
+    "messageGen": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "messageGenerator"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "userapi": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
   "auth": {
     "personaicomponentlib": {
       "customAuth": false,
@@ -36,5 +67,52 @@
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
     }
-  }
+  },
+  "function": {
+    "addUserstoTable": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "messageGenerator": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_addUserstoTable_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addUserstoTable"
+        }
+      ]
+    },
+    "AMPLIFY_function_addUserstoTable_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addUserstoTable"
+        }
+      ]
+    },
+    "AMPLIFY_function_messageGenerator_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "messageGenerator"
+        }
+      ]
+    },
+    "AMPLIFY_function_messageGenerator_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "messageGenerator"
+        }
+      ]
+    }
+  },
+  "storage": {}
 }

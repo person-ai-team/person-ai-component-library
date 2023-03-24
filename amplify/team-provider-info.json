@@ -9,11 +9,26 @@
       "UnauthRoleName": "amplify-personaicomponentlib-dev-133815-unauthRole",
       "StackName": "amplify-personaicomponentlib-dev-133815",
       "StackId": "arn:aws:cloudformation:us-east-1:522404115964:stack/amplify-personaicomponentlib-dev-133815/b6590430-c8e0-11ed-91ee-0ef4c173b0cd",
-      "AmplifyAppId": "d14bmddm3hb1aw"
+      "AmplifyAppId": "d14bmddm3hb1aw",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-personaicomponentlib-dev-133815-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
         "personaicomponentlib": {}
+      },
+      "api": {
+        "userapi": {},
+        "messageGen": {}
+      },
+      "function": {
+        "addUserstoTable": {
+          "deploymentBucketName": "amplify-personaicomponentlib-dev-133815-deployment",
+          "s3Key": "amplify-builds/addUserstoTable-347936424f464b596435-build.zip"
+        },
+        "messageGenerator": {
+          "deploymentBucketName": "amplify-personaicomponentlib-dev-133815-deployment",
+          "s3Key": "amplify-builds/messageGenerator-32785674434877336b4b-build.zip"
+        }
       }
     }
   }

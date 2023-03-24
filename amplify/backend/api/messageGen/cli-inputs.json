@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "paths": {
+    "/messages": {
+      "name": "/messages",
+      "lambdaFunction": "messageGenerator",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
+    }
+  }
+}

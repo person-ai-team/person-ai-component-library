@@ -10,6 +10,7 @@ import { withAuthenticator, } from "@aws-amplify/ui-react";
 import { Amplify, Auth } from "aws-amplify";
 import awsmobile from "../aws-exports";
 import { useState, useEffect } from 'react';
+import MessageGenerator from './components/MessageGenerator/MessageGenerator';
 
 Amplify.configure(awsmobile);
 
@@ -28,6 +29,7 @@ const Home = ( ) => {
   const [user, setUser] = useState(null);
   const [userName, setUserName] = useState(null as string | null);
   const [userEmail, setUserEmail] = useState(null as string | null);
+  const [ userSub, setUserSub] = useState(null as string | null);
   
   useEffect(() => {
     Auth.currentAuthenticatedUser()
@@ -36,6 +38,7 @@ const Home = ( ) => {
         setUser(user);
         setUserName(user.attributes.given_name + ' ' + user.attributes.family_name);
         setUserEmail(user.attributes.email);
+        setUserSub(user.attributes.sub);
       })
       .catch(error => {
         console.log('Error getting current user:', error);
@@ -46,25 +49,13 @@ const Home = ( ) => {
 
   return (
       <div>
-              <Header userName={userName} userEmail={userEmail} />
+              <Header userName={userName} userEmail={userEmail} userSub={userSub} />
       <div className=" w-full max-w-12xl flex-grow lg:flex ">
           {/* Left sidebar & main wrapper */}
           <div className="min-w-0 flex-1 bg-white xl:flex">
             
 
-            <div className="bg-white lg:min-w-0 lg:flex-1">
-              <div className="h-full py-6 px-4 sm:px-6 lg:px-8">
-                {/* Start main area*/}
-                <div className="relative h-28">
-                  <div className="absolute inset-0 bg-gray-200 rounded-lg shadow border-1 border-solid border-gray-500" >
-                    <div className='p-4 whitespace-normal leading-loose text-wrap font-small text-justify lg:leading-normal text-sm'>
-                    Today was a productive day. I had a healthy breakfast of eggs and oatmeal before a standing meeting and completing a task. 
-                    </div>
-                    </div>
-                </div>
-                {/* End main area */}
-              </div>
-            </div>
+            <MessageGenerator userSub={userSub} />
           </div>
 
           <div className="bg-white pr-4 sm:pr-6 lg:flex-shrink-0 lg:border-l lg:border-gray-00 lg:pr-8 xl:pl-2 xl:pr-8">
