@@ -13,7 +13,8 @@
   ```
 */
 'use client'
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
+import { usePathname} from 'next/navigation'
 import { Menu, Popover, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -22,8 +23,8 @@ import signOut from '@/app/api/auth/logout'
 
 
 const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'Timeline', href: '#', current: false },
+  { name: 'Home', href: '/', current: true },
+  { name: 'Timeline', href: '/calendar', current: false },
   { name: 'MealAI', href: '#', current: false },
   { name: 'FitAI', href: '#', current: false },
 ]
@@ -39,6 +40,22 @@ function classNames(...classes: string[]) {
 
 export default function Header(props: any) {
   const { userName, userEmail } = props
+
+  const path = usePathname()
+  console.log('path', path)
+
+  useEffect(() => {
+    // set navigation current
+  navigation.forEach((item) => {
+    if (item.href === path) {
+      item.current = true
+    } else {
+      item.current = false
+    }
+  })
+  }, [path])
+
+  
 
   console.log('userName', userName)
   console.log('userEmail', userEmail)
@@ -121,7 +138,7 @@ export default function Header(props: any) {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="absolute right-0 z-20 mt-2 w-32 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         {userNavigation.map((item) => (
                           <Menu.Item key={item.name}>
                             {({ active }) => (

@@ -6,13 +6,14 @@ import { Inter } from 'next/font/google'
 import styles from './page.module.css'
 import { Button } from './components/Button/Button'
 import Header from './components/Header/Header'
-import { withAuthenticator, } from "@aws-amplify/ui-react";
-import { Amplify, Auth } from "aws-amplify";
-import awsmobile from "../aws-exports";
+// import { withAuthenticator, } from "@aws-amplify/ui-react";
+// import { Amplify, Auth } from "aws-amplify";
+// import awsmobile from "../aws-exports";
 import { useState, useEffect } from 'react';
 import MessageGenerator from './components/MessageGenerator/MessageGenerator';
+import withAuthenticatorPage from './context/auth';
 
-Amplify.configure(awsmobile);
+// Amplify.configure(awsmobile);
 
 
 // Auth.currentAuthenticatedUser()
@@ -31,19 +32,19 @@ const Home = ( ) => {
   const [userEmail, setUserEmail] = useState(null as string | null);
   const [ userSub, setUserSub] = useState(null as string | null);
   
-  useEffect(() => {
-    Auth.currentAuthenticatedUser()
-      .then(user => {
-        console.log('Current user:', user);
-        setUser(user);
-        setUserName(user.attributes.given_name + ' ' + user.attributes.family_name);
-        setUserEmail(user.attributes.email);
-        setUserSub(user.attributes.sub);
-      })
-      .catch(error => {
-        console.log('Error getting current user:', error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   Auth.currentAuthenticatedUser()
+  //     .then(user => {
+  //       console.log('Current user:', user);
+  //       setUser(user);
+  //       setUserName(user.attributes.given_name + ' ' + user.attributes.family_name);
+  //       setUserEmail(user.attributes.email);
+  //       setUserSub(user.attributes.sub);
+  //     })
+  //     .catch(error => {
+  //       console.log('Error getting current user:', error);
+  //     });
+  // }, []);
 
   console.log('userName', userName);
 
@@ -109,5 +110,5 @@ const Home = ( ) => {
   )
 }
 
-export default withAuthenticator(Home)
+export default withAuthenticatorPage(Home)
 // export default Home
