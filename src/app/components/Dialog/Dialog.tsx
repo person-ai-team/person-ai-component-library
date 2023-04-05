@@ -104,7 +104,7 @@ export const PersonDialog = ({
             as="div"
             className={BASE_DIALOG_CLASSES}
             {...props}
-            onClose={setOpen}
+            onClose={handleClose}
             aria-labelledby="draggable-dialog-title"
         >
             <Transition.Child

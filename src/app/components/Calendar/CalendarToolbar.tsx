@@ -37,7 +37,7 @@ export default function CalendarToolbar(props: any) {
 
     return (
         <div className="flex h-full flex-col">
-      <header className="relative z-40 flex flex-none bg-slate-700 items-center justify-between border-b border-gray-200 py-2.5 px-3 z-0" style={{ backgroundColor: 'initial'}}>
+      <header className="relative z-40 flex flex-none bg-slate-700 items-center justify-between border-b border-gray-500 py-2.5 px-3 z-0" style={{ backgroundColor: 'initial'}}>
         {/* <h1 className="text-lg font-semibold leading-6 text-gray-900">
           <time dateTime={selectedDate} className="hidden sm:inline">{selectedMonth}</time>
         </h1>
@@ -76,7 +76,7 @@ export default function CalendarToolbar(props: any) {
             <button
               type="button"
               onClick={previousWeek}
-              className="flex items-center justify-center rounded-l-md border border-r-0 border-gray-300 bg-white py-2 pl-3 pr-4 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50"
+              className="flex items-center justify-center rounded-l-md border border-r-0 border-gray-500 bg-white py-2 pl-3 pr-4 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50"
             >
               <span className="sr-only">Previous Week</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
@@ -84,7 +84,7 @@ export default function CalendarToolbar(props: any) {
             <button
               type="button"
               onClick={goToToday}
-              className="hidden border-t border-b border-gray-300 bg-white px-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:relative md:block"
+              className="hidden border-t border-b border-gray-500 bg-white px-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:relative md:block"
             >
               Today
             </button>
@@ -92,7 +92,7 @@ export default function CalendarToolbar(props: any) {
             <button
               type="button"
               onClick={nextWeek}
-              className="flex items-center justify-center rounded-r-md border border-l-0 border-gray-300 bg-white py-2 pl-4 pr-3 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50"
+              className="flex items-center justify-center rounded-r-md border border-l-0 border-gray-500 bg-white py-2 pl-4 pr-3 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50"
             >
               <span className="sr-only">Next Week</span>
               <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
@@ -102,7 +102,7 @@ export default function CalendarToolbar(props: any) {
             <Menu as="div" className="relative">
               <Menu.Button
                 type="button"
-                className="flex items-center z-50 rounded-md border border-gray-300 bg-white py-2 pl-3 pr-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
+                className="flex items-center z-50 rounded-md border border-gray-500 bg-white py-2 pl-3 pr-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
               >
                 { !selected ? 'Week View' : selected}
                 <ChevronDownIcon className="ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -190,7 +190,7 @@ export default function CalendarToolbar(props: any) {
             <div className="ml-6 h-6 w-px bg-gray-300" />
             <button
               type="button"
-              className="ml-6 rounded-md border border-gray-300 bg-white py-2 pl-3 pr-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="ml-6 rounded-md border border-gray-500 bg-white py-2 pl-3 pr-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
               onClick={() => {
                 handleCreateEvent();
               }}

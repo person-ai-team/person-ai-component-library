@@ -64,7 +64,7 @@ function Calendar(props: { handleCreateEvent: () => void, handleEventView: () =>
   };
 
   return (
-    <div className='flex w-full lg:h-[calc(100vh-126px)] xl:h-[calc(100vh-126px)] md:h-[calc(100vh-76px)] sm:h-[calc(100vh-76px)] xs:h-[calc(100vh-76px)] xxs:h-[calc(100vh-76px)] flex-col'>
+    <div className='flex w-full lg:h-[calc(100vh-130px)] xl:h-[calc(100vh-130px)] md:h-[calc(100vh-76px)] sm:h-[calc(100vh-76px)] xs:h-[calc(100vh-76px)] xxs:h-[calc(100vh-76px)] flex-col'>
       <header className='z-10'>
         <CalendarToolbar
           handleCreateEvent={handleCreateEvent}

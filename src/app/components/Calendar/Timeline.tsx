@@ -66,7 +66,7 @@ function Timeline() {
       <CalendarContext.Provider value={{ stateCalendar, setStateCalendar }}>
         {/* <div className='h-screen'> */}
         <div className='flex flex-row'>
-          <div className='w-80 border-gray border-r'/>
+          <div className='w-80 border-gray-500 border-r'/>
         <Calendar handleEventView={handleEventView} handleCreateEvent={handleCreateEvent} handleEventViewClose={handleEventViewClose} />
         </div>
         <CreateEvent />

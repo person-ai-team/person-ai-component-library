@@ -81,7 +81,7 @@ export default function Header(props: any) {
       >
         {({ open }) => (
           <>
-            <div className="mx-auto border-b max-w-10xl px-4 sm:px-6 lg:px-4">
+            <div className="mx-auto border-b border-gray-500 max-w-10xl px-4 sm:px-6 lg:px-4">
               <div className="relative flex justify-between lg:gap-8" style={{height: 72}}>
                 <div className="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2">
                   <div className="flex flex-shrink-0 items-center">
@@ -160,7 +160,7 @@ export default function Header(props: any) {
                 </div>
               </div>
             </div>
-            <div className="mx-auto border-b max-w-10xl px-1 sm:px-6 lg:px-1">
+            <div className="mx-auto border-b border-gray-500 max-w-10xl px-1 sm:px-6 lg:px-1">
             <nav className="hidden lg:flex lg:space-x-8 lg:py-2.5" aria-label="Global">
               {navigation.map((item) => (
                 <a
