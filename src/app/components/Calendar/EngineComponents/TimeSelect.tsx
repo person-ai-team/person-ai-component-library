@@ -33,7 +33,7 @@ export default function TimeSelect(props: any) {
                     
                 </Listbox.Button>
                 <Listbox.Options className="absolute w-full z-50 py-1 mt-1 overflow-y-auto max-h-60 text-base bg-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5  sm:text-sm">
-                    {timeOptions.map((time) => (
+                    {timeOptions.map((time: any) => (
                         <Listbox.Option
                             key={time.value}
                             className={({ active }) =>
