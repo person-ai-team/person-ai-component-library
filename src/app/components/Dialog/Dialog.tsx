@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState, useMemo } from 'react'
+import { Fragment, useState, useMemo, useEffect } from 'react'
 import { ImSpinner2 } from "react-icons/im";
 import Draggable from 'react-draggable';
 
@@ -15,7 +15,7 @@ type DialogProps = {
     label?: string;
     children: React.ReactNode;
     openDialog: boolean;
-    initialFocusDialog?: React.MutableRefObject<HTMLElement | null>;
+    handleClose: () => void;
 }
 
 const getVariantClasses = (variant: typeof DialogVariant[number]): string => {
@@ -77,7 +77,7 @@ export const PersonDialog = ({
     label,
     children,
     openDialog,
-    initialFocusDialog,
+    handleClose,
     ...props
 }: DialogProps) => {
     const darkBgClass = getDarkBgClasses(isDarkBg, variant);
@@ -87,7 +87,15 @@ export const PersonDialog = ({
         const darkBgClass = getDarkBgClasses(isDarkBg, variant);
         return `${sizeClass} ${variantClass} ${darkBgClass}`;
     }, [size, variant, isDarkBg]);
-    const [open, setOpen] = useState(true);
+
+    const [open, setOpen] = useState(openDialog);
+
+    // close dialog
+    useEffect(() => {
+        setOpen(openDialog);
+      }, [openDialog]);
+
+    
 
     return (
         <Draggable handle='#draggable-dialog-title'>
@@ -95,7 +103,6 @@ export const PersonDialog = ({
         <Dialog
             as="div"
             className={BASE_DIALOG_CLASSES}
-            initialFocus={initialFocusDialog}
             {...props}
             onClose={setOpen}
             aria-labelledby="draggable-dialog-title"
@@ -146,7 +153,7 @@ export const PersonDialog = ({
                       type='button'
                       style={{ marginLeft: 'auto', marginTop: '-10px' }}
                       onClick={() => {
-                        console.log('hi');
+                        handleClose();
                       }}
                     >
                       <span className='sr-only'>Close</span>

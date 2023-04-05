@@ -5,7 +5,7 @@ import React, {useEffect, useState} from 'react';
 import {CalendarContext} from '../../../common/CalendarContext';
 
 import Calendar from './Calendar';
-import CreateEvent from './CreateEvent';
+import CreateEvent from './CreateEventService';
 
 const layout = 'week';
 

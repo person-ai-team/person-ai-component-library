@@ -24,10 +24,23 @@ function classNames(...classes: any) {
 }
 
 export default function CreateEvent() {
-  const [open , setOpen] = useState(true)
+  
+  const { stateCalendar, setStateCalendar } = useContext(CalendarContext);
+  const { createEventsDrawer } = stateCalendar;
+
+  const [open , setOpen] = useState(createEventsDrawer)
+
+  useEffect(() => {
+    setOpen(createEventsDrawer)
+  }, [createEventsDrawer])
+
+  const handleClose = () => {
+    setOpen(false);
+    setStateCalendar({ ...stateCalendar, createEventsDrawer: false });
+};
 
   return (
-    <PersonDialog size='large' openDialog={open}>
+    <PersonDialog size='large' handleClose={handleClose} openDialog={open}>
       <CreateEventEngine />
     </PersonDialog>
   )
