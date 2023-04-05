@@ -21,6 +21,7 @@ const locationOptions = [
 export default function TimeEngineDialog() {
     const [selectedLocation, setSelectedLocation] = useState(locationOptions[0].name)
     const [locationQuery, setLocationQuery] = useState('')
+    const [query, setQuery] = useState('')
     const { stateCalendar, setStateCalendar } = useContext(CalendarContext)
     const { selectedDate } = stateCalendar
 

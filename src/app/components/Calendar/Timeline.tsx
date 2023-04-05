@@ -30,6 +30,7 @@ function Timeline() {
     eventId : 0,
     localEvents: [],
     dailyTodos: [],
+    inputReference: null,
 
   });
 
