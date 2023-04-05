@@ -147,7 +147,13 @@ export default function InformationInput(props: any) {
           ref={descRef}
           style={{ outline: "none", boxShadow: "none" }}
           className="block w-full h-auto resize-none bg-white border-0 pb-2 pl-2.5 py-0 placeholder-gray-500 focus:ring-0 sm:text-sm"
-          placeholder="Add a description..."
+          placeholder={`Add ${
+            type === "Event"
+              ? "description"
+              : type === "Task"
+              ? "note"
+              : "people"
+          }`}
           defaultValue={""}
         />
       </div>
@@ -257,7 +263,7 @@ export default function InformationInput(props: any) {
               </div>
             </div>
             {
-                guests && guests.length > 0 && (
+                guests && guests.length > 0 && type === 'Event' && (
                     <div className="flex ">
               <VideoCameraIcon
                 className=" mt-2 mr-2 h-5 w-5 text-gray-700 group-hover:text-gray-500"

@@ -215,7 +215,7 @@ console.log('selectedDateWEL', selectedDate.toLocaleString("default", { weekday:
                   type="text"
                   readOnly
                   style={{outline: 'none'}}
-                  className="cursor-pointer shadow w-32 lg:w-32 border border-gray-700 text-center py-2.5  rounded-md text-gray-700 font-medium text-sm"
+                  className="cursor-pointer shadow w-32 lg:w-32 border border-gray-700 text-center py-2  rounded-md text-gray-700 font-medium text-sm"
                   placeholder="Select date"
                   // value={format(selectedDate, "D MMMM, YYYY")}
                   // if the selected date is today, show the date in the format Day, Month Date, Year
