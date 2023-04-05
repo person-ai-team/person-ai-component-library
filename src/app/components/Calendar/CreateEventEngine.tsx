@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Tab } from "@headlessui/react";
 import EventService from "./EventService";
+import TaskService from "./TaskService";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -110,7 +111,7 @@ export default function CreateEventEngine() {
       
       <div>
         {
-            selectedIndex === 0 ? (<div className=" bg-gray-200 text-gray-700"><EventService habitFrequencyIndex={habitFrequencyIndex} /></div>) : selectedIndex === 1 ? <p>Habit</p> : selectedIndex === 2 ? <p>Goals</p> : selectedIndex === 3 ? <p>Journal</p> : null
+            selectedIndex === 0 ? (<div className=" bg-gray-200 text-gray-700"><EventService habitFrequencyIndex={habitFrequencyIndex} /></div>) : selectedIndex === 1 ? <TaskService habitFrequencyIndex={habitFrequencyIndex} /> : selectedIndex === 2 ? <p>Goals</p> : selectedIndex === 3 ? <p>Journal</p> : null
         }
       </div>
     </div>
