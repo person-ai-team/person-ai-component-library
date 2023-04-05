@@ -15,6 +15,7 @@ type DialogProps = {
     label?: string;
     children: React.ReactNode;
     openDialog: boolean;
+    initialFocusDialog?: React.MutableRefObject<HTMLElement | null>;
 }
 
 const getVariantClasses = (variant: typeof DialogVariant[number]): string => {
@@ -76,6 +77,7 @@ export const PersonDialog = ({
     label,
     children,
     openDialog,
+    initialFocusDialog,
     ...props
 }: DialogProps) => {
     const darkBgClass = getDarkBgClasses(isDarkBg, variant);
@@ -93,6 +95,7 @@ export const PersonDialog = ({
         <Dialog
             as="div"
             className={BASE_DIALOG_CLASSES}
+            initialFocus={initialFocusDialog}
             {...props}
             onClose={setOpen}
             aria-labelledby="draggable-dialog-title"
