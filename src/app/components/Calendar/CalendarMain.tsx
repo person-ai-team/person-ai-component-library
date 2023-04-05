@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 
-import { CalendarContext } from '@/common/CalendarContext';
-import getSelectedWeekIndex from '@/common/getSelectedWeekIndex'
-import getWeekDays from '@/common/getWeekDays'
+import { CalendarContext } from '../../../common/CalendarContext';
+import getSelectedWeekIndex from '../../../common/getSelectedWeekIndex'
+import getWeekDays from '../../../common/getWeekDays'
 
 import DayView from './DayView';
 import WeekView from './WeekView';

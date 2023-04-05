@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 
 type DatepickerType = "date" | "month" | "year";
 
-export default function InputDatePicker(props: any) {
+export default function DatePicker(props: any) {
   const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const [dayCount, setDayCount] = useState<Array<number>>([]);
   const [blankDays, setBlankDays] = useState<Array<number>>([]);
@@ -71,11 +71,10 @@ export default function InputDatePicker(props: any) {
   };
 
   // compare formats of date.now and selectedDate
-  const currentDate = format(Date.now(), "MM/D/YYYY") as any
-  const selectedDateFormatted = format(selectedDate, "MM/D/YYYY")
+  const currentDate = format(Date.now(), "MM/DD/YYYY")
+  const selectedDateFormatted = format(selectedDate, "MM/DD/YYYY")
 
   console.log('currentDateFormat', selectedDateFormatted)
-  console.log('currentDate', selectedDay)
 
   const isToday = (date: number) =>
     isEqual(
@@ -89,16 +88,14 @@ export default function InputDatePicker(props: any) {
         currentDate
     );
 
-    console.log('isToday', isTodayCurrent(29))
-
 
 
     function isCurrentMonthandYear (){
         // get the current month and year
-        const currentMonth = format(Date.now(), "mm")
-        const currentYear = format(Date.now(), "yyyy")
-        const selectedMonth = format(selectedDate, "mm")
-        const selectedYear = format(selectedDate, "yyyy")
+        const currentMonth = format(Date.now(), "MM")
+        const currentYear = format(Date.now(), "YYYY")
+        const selectedMonth = format(selectedDate, "MM")
+        const selectedYear = format(selectedDate, "YYYY")
         if (currentMonth === selectedMonth && currentYear === selectedYear){
             return true
         } else {
@@ -107,6 +104,8 @@ export default function InputDatePicker(props: any) {
     }
 
     console.log('selected', selectedDate)
+
+    console.log('currentDate', isTodayCurrent(10))
 
 
 
@@ -158,9 +157,9 @@ export default function InputDatePicker(props: any) {
       selectedDate
     );
 
-console.log('selectedDate', format(selectedDate, "yyyy-mm-dd"))
+console.log('selectedDate', format(selectedDate, "YYYY-MM-DD"))
 // get the date in the format Day, Month Date, Year
-console.log('selectedDateWEL', format(selectedDate, "dd, MMMM, yyyy"))
+console.log('selectedDateWEL', format(selectedDate, "DD, MMMM, YYYY"))
 // get the date in the format Day
 console.log('selectedDateWEL', selectedDate.toLocaleString("default", { weekday: "long", month: "long", day: "numeric" }))
 
@@ -214,12 +213,10 @@ console.log('selectedDateWEL', selectedDate.toLocaleString("default", { weekday:
                 <input
                   type="text"
                   readOnly
-                  style={{outline: 'none'}}
-                  className="cursor-pointer shadow w-32 lg:w-32 border border-gray-700 text-center py-2.5  rounded-md text-gray-700 font-medium text-xs"
+                  style={{  outline: "none", boxShadow: "none", border: "1px solid", width: '150%'}}
+                  className="cursor-pointer text-center py-2 mt-2 leading-none rounded-full text-black font-medium text-xs"
                   placeholder="Select date"
-                  // value={format(selectedDate, "D MMMM, YYYY")}
-                  // if the selected date is today, show the date in the format Day, Month Date, Year
-                  value={isTodayCurrent(selectedDate.getDate()) ? 'Today' : format(selectedDate, "D MMM, YYYY")}
+                  value={selectedDate.toLocaleString("default", { weekday: "long", month: "long", day: "numeric", year: "numeric" })}
                   onClick={toggleDatepicker}
                 />
                 <div
@@ -230,8 +227,8 @@ console.log('selectedDateWEL', selectedDate.toLocaleString("default", { weekday:
                 </div>
                 {showDatepicker && (
                   <div
-                    className={`bg-gray-100 mt-11 -ml-28 rounded-lg shadow p-4 absolute top-0 left-0 z-50 ${selectedIndex === 1 && '-mt-24 ml-52 !important'}`} 
-                    style={{ width: "15rem", }}
+                    className={`bg-white mt-12 rounded-lg shadow p-4 absolute top-0 left-0 z-50 ${selectedIndex === 1 && '-mt-24 ml-52 !important'}`} 
+                    style={{ width: "17rem", }}
                   >
                     <div className="flex justify-between items-center mb-2">
                       <div>
@@ -260,18 +257,18 @@ console.log('selectedDateWEL', selectedDate.toLocaleString("default", { weekday:
                           
                           className="flex-grow p-1 text-lg font-bold text-gray-800 cursor-pointer  rounded-lg"
                         >
-                          <div className="text-center">
+                          <p className="text-center">
                             {format(datepickerHeaderDate, "MMMM")}
-                          </div>
+                          </p>
                         </div>
                       )}
                       <div
                         
                         className="flex-grow p-1 text-lg font-bold text-gray-800 cursor-pointer rounded-lg"
                       >
-                        <div className="text-center">
+                        <p className="text-center">
                           {format(datepickerHeaderDate, "YYYY")}
-                        </div>
+                        </p>
                       </div>
                       <div>
                         <button
@@ -322,15 +319,15 @@ console.log('selectedDateWEL', selectedDate.toLocaleString("default", { weekday:
                             <div
                               key={i}
                               style={{ width: "14.26%" }}
-                              className="px-1 py-1 mb-1"
+                              className="px-1 mb-1"
                             >
                               <div
                                 onClick={setDateValue(d)}
-                                className={`cursor-pointer text-center text-sm leading-tight rounded-full transition ease-in-out duration-100 ${
+                                className={`cursor-pointer text-center text-sm leading-none rounded-full leading-loose transition ease-in-out duration-100 ${
                                   isToday(d)
-                                    ? "bg-gray-900 text-white"
-                                    : "text-gray-700 hover:bg-gray-400"
-                                } ${isTodayCurrent(d)   ? "bg-gray-400 text-white" : ""}`}
+                                    ? "bg-blue-500 text-white"
+                                    : "text-gray-700 hover:bg-blue-200"
+                                } ${isTodayCurrent(d)   ? "bg-blue-200 text-white" : ""}`}
                               >
                                 {d}
                               </div>

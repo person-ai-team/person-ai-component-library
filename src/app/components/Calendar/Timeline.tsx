@@ -2,9 +2,10 @@
 
 import React, {useEffect, useState} from 'react';
 
-import {CalendarContext} from '@/common/CalendarContext';
+import {CalendarContext} from '../../../common/CalendarContext';
 
 import Calendar from './Calendar';
+import CreateEvent from './CreateEvent';
 
 const layout = 'week';
 
@@ -63,8 +64,11 @@ function Timeline() {
 
       <CalendarContext.Provider value={{ stateCalendar, setStateCalendar }}>
         {/* <div className='h-screen'> */}
+        <div className='flex flex-row'>
+          <div className='w-80 border-gray border-r'/>
         <Calendar handleEventView={handleEventView} handleCreateEvent={handleCreateEvent} handleEventViewClose={handleEventViewClose} />
-      
+        </div>
+        <CreateEvent />
         {/* </div> */}
       
     </CalendarContext.Provider>

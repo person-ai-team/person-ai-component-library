@@ -19,11 +19,11 @@ import { Menu, Popover, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Launcher from '../Launcher/Launcher'
-import signOut from '@/app/api/auth/logout'
+import signOut from '../../api/auth/logout'
 
 
 const navigation = [
-  { name: 'Home', href: '/', current: true },
+  { name: 'Home', href: '/', current: false },
   { name: 'Timeline', href: '/calendar', current: false },
   { name: 'MealAI', href: '#', current: false },
   { name: 'FitAI', href: '#', current: false },
@@ -75,7 +75,7 @@ export default function Header(props: any) {
         className={({ open }) =>
           classNames(
             open ? 'fixed inset-0 z-40 overflow-y-auto' : '',
-            'bg-white shadow-sm lg:static lg:overflow-y-visible'
+            'bg-white lg:static lg:overflow-y-visible'
           )
         }
       >
@@ -160,8 +160,8 @@ export default function Header(props: any) {
                 </div>
               </div>
             </div>
-            <div className="mx-auto border-b max-w-10xl px-4 sm:px-6 lg:px-4">
-            <nav className="hidden lg:flex lg:space-x-8 lg:py-2" aria-label="Global">
+            <div className="mx-auto border-b max-w-10xl px-1 sm:px-6 lg:px-1">
+            <nav className="hidden lg:flex lg:space-x-8 lg:py-2.5" aria-label="Global">
               {navigation.map((item) => (
                 <a
                   key={item.name}

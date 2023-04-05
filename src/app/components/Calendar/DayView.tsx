@@ -92,7 +92,7 @@ export default function DayView(props: any) {
         <div
           className='currentTimeDot'
           style={{
-            marginTop: marginTop - 10,
+            marginTop: marginTop - 5,
             width: 12,
             zIndex: 52,
             marginLeft: -6.5,
@@ -107,7 +107,7 @@ export default function DayView(props: any) {
           className='currentTimeLine'
           ref={markerRef}
           style={{
-            marginTop: marginTop - 5,
+            marginTop: marginTop,
             position: 'absolute',
             zIndex: 51,
             borderColor: 'rgb(226, 57, 43)',
@@ -128,24 +128,24 @@ export default function DayView(props: any) {
       const now = new Date();
       const initTime = new Date(format(now, 'YYYY/MM/DD 0:0:0'));
       const position = differenceInMinutes(now, initTime);
-      setCurrentTimePosition(position * 2);
-    }, 10);
+      setCurrentTimePosition(position);
+    }, 1000);
   }, []);
 
   useEffect(() => {
     scrollToView();
   }, [currentTimePosition]);
 
-  useEffect(() => {
-    // Set the container scroll position based on the current time.
-    const currentMinute = new Date().getHours() * 60;
-    container.current.scrollTop =
-      ((container.current.scrollHeight -
-        containerNav.current.offsetHeight -
-        containerOffset.current.offsetHeight) *
-        currentMinute) /
-      1440;
-  }, []);
+    // useEffect(() => {
+    //   // Set the container scroll position based on the current time.
+    //   const currentMinute = new Date().getHours() * 60;
+    //   container.current.scrollTop =
+    //     ((container.current.scrollHeight -
+    //       containerNav.current.offsetHeight -
+    //       containerOffset.current.offsetHeight) *
+    //       currentMinute) /
+    //     1440;
+    // }, []);
 
   return (
     <div className='flex h-full flex-col'>
@@ -183,156 +183,132 @@ export default function DayView(props: any) {
               <div
                 className='col-start-1 col-end-2 row-start-1 grid divide-y divide-gray-100'
                 style={{
-                  gridTemplateRows: 'repeat(48, minmax(3.5rem, 1fr))',
+                  gridTemplateRows: 'repeat(24, minmax(3.75rem, 1fr))',
                   position: 'relative',
                 }}
                 data-date={selectedDate}
               >
-                <div ref={containerOffset} className='row-end-1 h-7'></div>
+                {/* <div ref={containerOffset} className='row-end-1 h-7'></div> */}
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     12AM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     1AM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     2AM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     3AM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     4AM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     5AM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     6AM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     7AM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     8AM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     9AM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     10AM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     11AM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     12PM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     1PM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     2PM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     3PM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     4PM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     5PM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     6PM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     7PM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     8PM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     9PM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     10PM
                   </div>
                 </div>
-                <div />
                 <div>
                   <div className='sticky left-0 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400'>
                     11PM
                   </div>
                 </div>
-                <div />
 
                 {isToday && <CurrentTimeMark marginTop={currentTimePosition} />}
               </div>
@@ -383,7 +359,7 @@ export default function DayView(props: any) {
             </div>
           </div>
         </div>
-        <div className='hidden w-1/2 max-w-md flex-none border-l border-gray-100 py-10 px-8 md:block'>
+        {/* <div className='hidden w-1/2 max-w-md flex-none border-l border-gray-100 py-10 px-8 md:block'>
           <div className='flex items-center text-center text-gray-900'>
             <button
               type='button'
@@ -448,7 +424,7 @@ export default function DayView(props: any) {
               </button>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

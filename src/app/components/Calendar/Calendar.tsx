@@ -1,7 +1,7 @@
 import { addDays, addWeeks, subDays, subWeeks } from 'date-fns';
 import React, { useContext } from 'react';
 
-import { CalendarContext } from '@/common/CalendarContext';
+import { CalendarContext } from '../../../common/CalendarContext';
 import EventsView from './EventView';
 
 import CalendarMain from './CalendarMain';
@@ -64,7 +64,7 @@ function Calendar(props: { handleCreateEvent: () => void, handleEventView: () =>
   };
 
   return (
-    <div className='flex lg:h-[calc(100vh-126px)] xl:h-[calc(100vh-126px)] md:h-[calc(100vh-76px)] sm:h-[calc(100vh-76px)] xs:h-[calc(100vh-76px)] xxs:h-[calc(100vh-76px)] flex-col'>
+    <div className='flex w-full lg:h-[calc(100vh-126px)] xl:h-[calc(100vh-126px)] md:h-[calc(100vh-76px)] sm:h-[calc(100vh-76px)] xs:h-[calc(100vh-76px)] xxs:h-[calc(100vh-76px)] flex-col'>
       <header className='z-10'>
         <CalendarToolbar
           handleCreateEvent={handleCreateEvent}

@@ -14,7 +14,7 @@
 */
 import { Fragment, useState, useEffect, useContext } from 'react';
 import { format } from 'date-fns';
-import { CalendarContext } from '@/common/CalendarContext';
+import { CalendarContext } from '../../../common/CalendarContext';
 import { Dialog, Transition } from '@headlessui/react';
 // import { XMarkIcon } from '@heroicons/react/24/outline'
 import {
@@ -22,7 +22,7 @@ import {
   PlusIcon,
   QuestionMarkCircleIcon,
 } from '@heroicons/react/20/solid';
-import { getFromLocalStorage, setInLocalStorage } from '@/lib/helper';
+import { getFromLocalStorage, setInLocalStorage } from '../../../lib/helper';
 
 const team = [
   {

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Header from '@/app/components/Header/Header'
+import Header from '../../app/components/Header/Header'
 import Timeline from '../components/Calendar/Timeline'
 
 const Calendar = () => {

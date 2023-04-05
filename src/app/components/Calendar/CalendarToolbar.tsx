@@ -3,7 +3,7 @@ import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/r
 import format from 'date-fns/format'
 import { Fragment, useContext, useState } from 'react'
 
-import { CalendarContext } from '@/common/CalendarContext'
+import { CalendarContext } from '../../../common/CalendarContext'
 
 
 
@@ -26,6 +26,8 @@ export default function CalendarToolbar(props: any) {
     const [selected, setSelected] = useState(views[0])
 
     const selectedMonth = format(selectedDate, 'ddd MMMM D, YYYY');
+    const selectedDayMonth = format(selectedDate, 'MMMM YYYY');
+    const selectedDayInMonth = format(selectedDate, 'D');
     const selectedDay = format(selectedDate, 'dddd');
 
     const setLayout = (props: any) => {
@@ -35,21 +37,39 @@ export default function CalendarToolbar(props: any) {
 
     return (
         <div className="flex h-full flex-col">
-      <header className="relative z-40 flex flex-none bg-slate-700 items-center justify-between border-b border-gray-200 py-4 px-6 z-0" style={{ backgroundColor: 'ghostwhite'}}>
+      <header className="relative z-40 flex flex-none bg-slate-700 items-center justify-between border-b border-gray-200 py-2.5 px-3 z-0" style={{ backgroundColor: 'initial'}}>
         {/* <h1 className="text-lg font-semibold leading-6 text-gray-900">
           <time dateTime={selectedDate} className="hidden sm:inline">{selectedMonth}</time>
         </h1>
         { layout === 'day' && (<p className="mt-1 text-sm text-gray-500">Saturday</p>)} */}
         <div>
-          <h1 className="text-lg font-semibold leading-6 text-gray-900">
-            <time dateTime={selectedDate} className="sm:hidden">
+          <h1 className="text-lg font-semibold leading-6 text-gray-700">
+            {
+              layout === 'week' && (
+                <div>
+                  <time dateTime={selectedDate} className="sm:hidden">
               {selectedMonth}
             </time>
             <time dateTime={selectedDate} className="hidden sm:inline">
               {selectedMonth}
             </time>
+                </div>
+              )
+            }
+            {
+              layout === 'day' && (
+                <div>
+                  <time dateTime={selectedDate} className="sm:hidden">
+              {selectedDayMonth}
+            </time>
+            <time dateTime={selectedDate} className="hidden sm:inline">
+              {selectedDayMonth}
+            </time>
+                </div>
+              )
+            }
           </h1>
-          { layout === 'day' && (<p className="mt-1 text-sm text-gray-500">{selectedDay}</p>)}
+          { layout === 'day' && (<p className="mt-1 text-sm text-gray-500">{selectedDay}, {selectedDayInMonth} </p>)}
         </div>
         <div className="flex items-center">
           <div className="flex items-center rounded-md shadow-sm md:items-stretch">
@@ -170,7 +190,7 @@ export default function CalendarToolbar(props: any) {
             <div className="ml-6 h-6 w-px bg-gray-300" />
             <button
               type="button"
-              className="ml-6 rounded-md border border-transparent bg-blue-600 py-2 pl-3 pr-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="ml-6 rounded-md border border-gray-300 bg-white py-2 pl-3 pr-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               onClick={() => {
                 handleCreateEvent();
               }}

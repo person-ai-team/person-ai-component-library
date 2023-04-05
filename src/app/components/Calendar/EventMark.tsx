@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { CalendarContext } from '@/common/CalendarContext';
+import { CalendarContext } from '../../../common/CalendarContext';
 import { format, differenceInMinutes } from 'date-fns';
 
 // create an event mark in the form of a box with a time label in tailwindcss

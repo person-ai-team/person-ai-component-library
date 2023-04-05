@@ -5,7 +5,7 @@ import format from 'date-fns/format';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import NoSSR from 'react-no-ssr';
 
-import { getFromLocalStorage } from '@/lib/helper';
+import { getFromLocalStorage } from '../../../lib/helper';
 
 import EventMark from './EventMark';
 
@@ -277,7 +277,7 @@ export default function WeekView(props: any) {
                     <span
                       className={
                         day.isToday
-                          ? 'mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white'
+                          ? 'mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-300 font-semibold text-white'
                           : 'mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900'
                       }
                     >
@@ -294,14 +294,14 @@ export default function WeekView(props: any) {
                 {selectedWeekFormatted.map((day: any, index: any) => {
                   return (
                     <div
-                      className='flex items-center justify-center py-3'
+                      className='flex items-center justify-center py-2.5'
                       key={index}
                     >
                       <span>{day.dayName}</span>
                       <span
                         className={
                           day.isToday
-                            ? 'ml-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white'
+                            ? 'ml-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-gray-600 font-semibold text-white'
                             : 'ml-1.5 items-center justify-center font-semibold text-gray-900'
                         }
                       >
