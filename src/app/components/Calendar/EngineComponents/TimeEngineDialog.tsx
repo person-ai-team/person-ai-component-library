@@ -125,7 +125,7 @@ export default function TimeEngineDialog() {
           <div className="relative w-[139px] border border-gray-700 cursor-default overflow-hidden rounded-lg bg-gray-100 text-center  sm:text-sm">
             <Combobox.Input
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 placeholder-gray-600"
-              displayValue={(location) => location.name}
+              displayValue={(location: any) => location.name}
                 placeholder="Add Location"
               onChange={(event) => setLocationQuery(event.target.value)}
               style={{ outline: 'none', boxShadow: 'none' }}
