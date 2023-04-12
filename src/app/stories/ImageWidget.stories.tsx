@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import ImageWidget from "../components/Widgets/ImageWidget/ImageWidget";
-import { Size } from "../components/Widgets/ResizableWidget";
 
 const meta: Meta<typeof ImageWidget> = {
 	title: "Example/ImageWidget",
@@ -16,7 +15,7 @@ type Story = StoryObj<typeof ImageWidget>;
 
 export const Small: Story = {
 	args: {
-		initialSize: "small",
+		initialSize: "sm",
 		src: "https://picsum.photos/200",
 		width: 500,
 		height: 500,

@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
 import WeatherWidget from "../components/Widgets/Weather/WeatherWidget";
-import type { Size } from "../components/Widgets/ResizableWidget";
 
 const meta: Meta<typeof WeatherWidget> = {
 	title: "Example/WeatherWidget",
@@ -16,7 +15,7 @@ type Story = StoryObj<typeof WeatherWidget>;
 
 export const Small: Story = {
 	args: {
-		initialSize: "small",
+		initialSize: "sm",
 		data: {
 			location: "London",
 			temperature: 25,
@@ -27,7 +26,7 @@ export const Small: Story = {
 
 export const Medium: Story = {
 	args: {
-		initialSize: "medium",
+		initialSize: "md",
 		data: {
 			location: "Seattle",
 			temperature: 15,

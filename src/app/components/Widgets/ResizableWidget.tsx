@@ -1,14 +1,15 @@
 import { useState } from "react";
 
-export type Size = "small" | "medium" | "large";
+export type Size = "sm" | "md" | "lg";
 
 const sizes: Record<Size, string> = {
-	small: "w-32 h-32",
-	medium: "w-64 h-64",
-	large: "w-96 h-96",
+	sm: "w-48 h-48",
+	md: "w-96 h-48",
+	lg: "w-96 h-96",
 };
 
-interface ResizableWidgetProps {
+// Describe the functions below
+export interface ResizableWidgetProps {
 	initialSize: Size;
 	children: React.ReactNode;
 }
@@ -17,8 +18,8 @@ export default function ResizableWidget({ initialSize, children }: ResizableWidg
 	const [size, setSize] = useState<Size>(initialSize);
 
 	return (
-		<div className={`border p-4 ${sizes[size]}`}>
-			<div className="flex justify-between mb-2">
+		<div className={` relative border ml-4 mt-4 p-4 ${sizes[size]}`}>
+			<div className="absolute inset-x-0 bottom-0 gap-2 flex justify-between -mb-10">
 				{Object.keys(sizes).map((key) => (
 					<button
 						key={key}

@@ -17,6 +17,18 @@ type Story = StoryObj<typeof ResizableWidget>;
 
 export const Small: Story = {
 	args: {
-		initialSize: "small",
+		initialSize: "sm",
+	},
+};
+
+export const Medium: Story = {
+	args: {
+		initialSize: "md",
+	},
+};
+
+export const Large: Story = {
+	args: {
+		initialSize: "lg",
 	},
 };
