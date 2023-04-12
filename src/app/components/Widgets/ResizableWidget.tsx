@@ -18,7 +18,7 @@ export default function ResizableWidget({ initialSize, children }: ResizableWidg
 	const [size, setSize] = useState<Size>(initialSize);
 
 	return (
-		<div className={` relative border ml-4 mt-4 p-4 ${sizes[size]}`}>
+		<div className={`relative border ml-4 mt-4 p-4 ${sizes[size]}`}>
 			<div className="absolute inset-x-0 bottom-0 gap-2 flex justify-between -mb-10">
 				{Object.keys(sizes).map((key) => (
 					<button
