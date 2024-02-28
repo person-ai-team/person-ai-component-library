@@ -160,7 +160,7 @@ export default function Header(props: any) {
                 </div>
               </div>
             </div>
-            <div className="mx-auto border-b max-w-10xl px-1 sm:px-6 lg:px-1">
+            {/* <div className="mx-auto border-b max-w-10xl px-1 sm:px-6 lg:px-1">
             <nav className="hidden lg:flex lg:space-x-8 lg:py-2.5" aria-label="Global">
               {navigation.map((item) => (
                 <a
@@ -176,7 +176,7 @@ export default function Header(props: any) {
                 </a>
               ))}
             </nav>
-            </div>
+            </div> */}
 
             <Popover.Panel as="nav" className="lg:hidden" aria-label="Global">
               <div className="mx-auto max-w-3xl space-y-1 px-2 pt-2 pb-3 sm:px-4">

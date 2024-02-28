@@ -110,5 +110,5 @@ const Home = ( ) => {
   )
 }
 
-export default withAuthenticatorPage(Home)
-// export default Home
+// export default withAuthenticatorPage(Home)
+export default Home
